@@ -23,11 +23,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import javax.validation.Valid;
 
 @Slf4j
 @RestController
-@RequestMapping(MarkRestController.REST_URL)
+@RequestMapping(value = MarkRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MarkRestController {
     static final String REST_URL = "/mark";
 
@@ -35,7 +34,7 @@ public class MarkRestController {
     private GradeService gradeService;
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/all/{studentId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/all/{studentId}")
     @ApiOperation(value = "Find all marks of student")
     public ResponseEntity<List<Mark>> findAllMarksOfStudent(@PathVariable("studentId") Integer studentId) {
         log.info("Find all to student = {}", studentId);
@@ -43,7 +42,7 @@ public class MarkRestController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/average/{studentId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/average/{studentId}")
     @ApiOperation(value = "Find average marks with students")
     public ResponseEntity<Double> findEverageMarkOfStudent(@PathVariable("studentId") Integer studentId) {
         log.info("Find average grade of student = {}", studentId);
