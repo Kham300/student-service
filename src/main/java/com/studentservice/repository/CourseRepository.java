@@ -13,7 +13,7 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     @EntityGraph(attributePaths = {"students"}, type = EntityGraph.EntityGraphType.FETCH)
-    @Query("SELECT c FROM Course c LEFT JOIN c.students s WHERE c.id =:id")
+    @Query("SELECT c FROM Course c LEFT JOIN FETCH c.students s WHERE c.id =:id")
     Course getCourseWithStudents(int id);
 
     @EntityGraph(attributePaths = {"students"}, type = EntityGraph.EntityGraphType.LOAD)

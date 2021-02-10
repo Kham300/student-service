@@ -56,6 +56,7 @@ public class Student extends AbstractBaseEntity {
             name = "courses",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
+    @JsonManagedReference
     private Set<Course> courses = new HashSet<>();
 
     @ApiModelProperty(hidden = true)

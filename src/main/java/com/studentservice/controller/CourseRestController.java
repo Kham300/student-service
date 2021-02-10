@@ -32,7 +32,7 @@ import static com.studentservice.util.ValidationUtil.checkNotFoundWithId;
 
 @Slf4j
 @RestController
-@RequestMapping(CourseRestController.REST_URL)
+@RequestMapping(value = CourseRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CourseRestController {
     static final String REST_URL = "/course";
 
@@ -42,7 +42,7 @@ public class CourseRestController {
     @Autowired
     private StudentRepository studentRepository;
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}")
     @ApiOperation(value = "Find course by id with students")
     public Course getById(@PathVariable("id") Integer id) {
         log.info("Find course by {}", id);
